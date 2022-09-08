@@ -1,6 +1,17 @@
 const express = require('express');
 const app = express();
+const fs = require('fs');
+const validarAdmin = require('./middleware/userLogs.js');
 
+app.use(express.json());
+app.use((req,res,next) => {
+   fs.appendFileSync('./logs/userLogs.txt', 'El usuario ingresó a la ruta: ' + req.url + '\n');
+   next();
+})
+
+app.get('/admin', validarAdmin, (req,res) => {
+   res.send(req.respuesta);
+})
 
 app.get('/', (req, res) => {
    res.status(200).json({
