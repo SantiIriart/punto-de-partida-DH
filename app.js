@@ -3,15 +3,24 @@ const app = express();
 
 
 app.get('/', (req, res) => {
-   res.send('Inicio');
+   res.status(200).json({
+      ok: true,
+      msg: 'Inicio'
+   });
 });
 
 app.get('/services', (req, res) => {
-   res.send('Inicio');
+   res.status(200).json({
+      ok: true,
+      msg: 'Services'
+   });
 });
 
 app.get('/services/design', (req, res) => {
-   res.send('Inicio');
+   res.status(200).json({
+      ok: true,
+      msg: 'Design'
+   });
 });
 
 
